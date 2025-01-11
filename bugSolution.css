@@ -1,0 +1,22 @@
+/* bugSolution.css */
+
+/* Fix: Ensure the attribute exists and handle cases where it might be missing. */
+data {attribute-value: "Default Value"}
+
+.element::before {
+  content: attr(attribute-value);
+}
+
+/* Fix: Define variables and ensure they are of the correct data type (string).*/
+:root {
+  --my-content: "This is a string.";
+}
+
+.element::after {
+  content: var(--my-content);
+}
+
+/* Additional robustness: Check for empty strings using the ternary operator.*/
+.element::after{
+content: attr(attribute-value) ? attr(attribute-value) : "No Attribute Value";
+} 
